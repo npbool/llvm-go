@@ -1,0 +1,35 @@
++    &     +=    &=     &&    ==    !=    (    )
+-    |     -=    |=     ||    <     <=    [    ]
+*    ^     *=    ^=     <-    >     >=    {    }
+/    <<    /=    <<=    ++    =     :=    ,    ;
+%    >>    %=    >>=    --    !     ...   .    :
+     &^          &^=
+
+
+    Type			:	TypeName
+				|	TypeLit 
+				|	'(' Type ')'
+;	
+
+TypeName		:	IDENTIFIER
+	| QualifiedIdent
+;
+TypeLit			:	ArrayType
+				|	StructType
+				|	PointerType
+				|	FunctionType
+				|	InterfaceType
+				|	SliceType
+				|	MapType
+				|	ChannelType
+;
+
+ArrayType		:	'[' ArrayLength ']' ElementType
+ArrayLength 	:	Expression
+Element			:	Type
+
+FunctionType	:	FUNC Signature
+Signature		:	Parameters 
+				|	Parameters Result
+Result			:	Parameters 
+				|	Type
